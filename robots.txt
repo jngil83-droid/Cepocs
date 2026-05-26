@@ -1,5 +1,5 @@
-Plaintext
 User-agent: *
 Allow: /
 
 Sitemap: https://cepocs.pages.dev/sitemap.xml
+Sitemap: https://cepocs.pages.dev/sitemap.txt
