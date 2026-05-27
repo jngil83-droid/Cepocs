@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: jngil83-droid/Cepocs
+  branch: main
+
+# Configuración de los archivos multimedia
+media_folder: "assets/img/noticias"
+public_folder: "/assets/img/noticias"
+
+# Configuración de la sección de noticias
+collections:
+  - name: "noticias"
+    label: "Noticias"
+    folder: "content/noticias"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: "json"
+    fields:
+      - {label: "Titular", name: "title", widget: "string"}
+      - {label: "Fecha de Publicación", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
+      - {label: "Autor/a", name: "author", widget: "string", default: "CEPOCS"}
+      - {label: "Foto de Portada", name: "image", widget: "image", required: true}
+      - {label: "Resumen Corto", name: "description", widget: "string"}
+      - {label: "Cuerpo de la Noticia", name: "body", widget: "markdown"}
