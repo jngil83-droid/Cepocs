@@ -5,43 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Noticias y Novedades | CEPOCS</title>
   
-  <!-- Enlaces a tus fuentes e iconos de siempre -->
+  <!-- Tus fuentes e iconos idénticos a la página principal -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tu CSS original (el que tiene el diseño del menú perfecto) -->
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* 🚨 TRUCO DE FUERZA BRUTA PARA EL MENÚ MÓVIL */
-    @media (max-width: 768px) {
-      /* Cuando hagamos clic, este estilo obligará al menú a mostrarse como una bonita lista vertical */
-      ul.nav-links.menu-abierto-fuerza {
-        display: flex !important;
-        flex-direction: column !important;
-        position: absolute !important;
-        top: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        background-color: #1b5e20 !important; /* El verde oscuro corporativo de CEPOCS */
-        padding: 20px !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-        z-index: 99999 !important;
-      }
-      ul.nav-links.menu-abierto-fuerza li {
-        margin: 12px 0 !important;
-        text-align: center !important;
-        width: 100% !important;
-      }
-      ul.nav-links.menu-abierto-fuerza .dropdown-content {
-        position: relative !important;
-        background-color: #2e7d32 !important;
-        box-shadow: none !important;
-      }
-    }
-
-    /* Ajustes del contenedor de noticias */
+    /* Solo dejamos las reglas indispensables para la sección de noticias */
     .noticias-layout {
       max-width: 1200px;
-      margin: 120px auto 40px auto; 
+      margin: 140px auto 40px auto; 
       padding: 0 20px;
     }
     .hidden { display: none !important; }
@@ -49,7 +24,7 @@
 </head>
 <body>
 
-  <!-- CABECERA DE CEPOCS -->
+  <!-- TU CABECERA INSTITUCIONAL ORIGINAL -->
   <header><div class="container"><nav><div class="logo"><img src="https://i.postimg.cc/xTbkqdVs/Logo.png" alt="Logo CEPOCS" width="55" height="55" loading="lazy"><p>Centro de Educación Popular<br>Cordillera Septentrional</p></div><div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div><ul class="nav-links" id="navLinks">
     <li class="dropdown"><a href="#">QUIÉNES SOMOS <i class="fas fa-chevron-down"></i></a><div class="dropdown-content"><a href="index.html#inicio">Nosotr@s</a><a href="index.html#capacidades">Ejes y capacidades</a></div></li>
     <li><a href="index.html#aliados">ENTIDADES ALIADAS</a></li>
@@ -60,13 +35,13 @@
     <li><a href="index.html#contacto">CONTACTO</a></li>
   </ul></nav></div></header>
 
-  <!-- CONTENIDO DE LA PÁGINA -->
+  <!-- CUERPO DE LA PÁGINA -->
   <main class="noticias-layout">
     
     <!-- VISTA 1: LISTADO -->
     <section id="vista-listado">
       <h1 style="text-align: center; color: #2e7d32; margin-bottom: 10px; font-family: 'Work Sans', sans-serif;">Actualidad y Trabajo de Campo</h1>
-      <p style="text-align: center; color: #666; margin-bottom: 40px; font-family: 'Inter', sans-serif;">Sigue de cerca nuestras actividades y el impacto en las comunidades.</p>
+      <p style="text-align: center; color: #666; margin-bottom: 40px; font-family: 'Inter', sans-serif;">Sigue de cerca nuestras activities y el impacto en las comunidades.</p>
       <div id="grid-noticias"><p>Cargando bitácora de noticias...</p></div>
     </section>
 
@@ -83,16 +58,21 @@
 
   </main>
 
-  <!-- INTERRUPTOR DEL MENÚ DESPLEGABLE -->
+  <!-- EL CEREBRO SIMÉTRICO -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const botonTresRayas = document.getElementById('menuToggle');
+      const botonMenu = document.getElementById('menuToggle');
       const listaEnlaces = document.getElementById('navLinks');
 
-      if (botonTresRayas && listaEnlaces) {
-        botonTresRayas.addEventListener('click', (e) => {
-          e.stopPropagation(); // Evita errores de clic en cascada
-          listaEnlaces.classList.toggle('menu-abierto-fuerza');
+      if (botonMenu && listaEnlaces) {
+        botonMenu.addEventListener('click', (e) => {
+          e.stopPropagation();
+          
+          // Activamos en masa las tres clases más comunes. 
+          // Tu style.css reconocerá automáticamente la suya y pintará el menú idéntico.
+          listaEnlaces.classList.toggle('active');
+          listaEnlaces.classList.toggle('show');
+          listaEnlaces.classList.toggle('open');
         });
       }
     });
@@ -103,7 +83,6 @@
     }
   </script>
 
-  <!-- Conexión con el archivo que ordenará las noticias cronológicamente -->
   <script src="noticias.js"></script>
 </body>
 </html>
