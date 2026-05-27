@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Novedades | CEPOCS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="noticias.css">
+</head>
+<body>
+
+    <header><div class="container"><nav><div class="logo"><img src="https://i.postimg.cc/xTbkqdVs/Logo.png" alt="Logo CEPOCS" width="55" height="55" loading="lazy"><p>Centro de Educación Popular<br>Cordillera Septentrional</p></div><div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div><ul class="nav-links" id="navLinks">
+        
+        <li class="dropdown"><a href="#">QUIÉNES SOMOS <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="index.html#inicio">Nosotr@s</a>
+                <a href="index.html#capacidades">Ejes y capacidades</a>
+            </div>
+        </li>
+        <li><a href="index.html#aliados">ENTIDADES ALIADAS</a></li>
+        <li><a href="index.html#transparencia">TRANSPARENCIA</a></li>
+        <li><a href="index.html#proyectos">PROYECTOS</a></li>
+        <li class="dropdown"><a href="#">MULTIMEDIA <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="index.html#fotos">Fotos</a>
+                <a href="index.html#videos">Videos</a>
+            </div>
+        </li>
+        <li><a href="#" class="active">NOTICIAS</a></li>
+        <li><a href="index.html#contacto">CONTACTO</a></li>
+        
+    </ul></nav></div></header>
+
+    <main style="max-width: 1200px; margin: 120px auto 40px auto; padding: 0 20px;">
+        
+        <section id="vista-listado">
+            <h1 style="text-align: center; color: #2e7d32; margin-bottom: 10px;">Actualidad y Trabajo de Campo</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 40px;">Sigue de cerca nuestras actividades y el impacto en las comunidades.</p>
+            
+            <div id="grid-noticias" class="news-grid">
+                <p>Cargando bitácora de noticias...</p>
+            </div>
+        </section>
+
+        <article id="vista-detalle" class="hidden" style="max-width: 800px; margin: 0 auto;">
+            <button onclick="volverAlListado()" style="margin-bottom:20px; cursor:pointer; padding:8px 15px;">← Volver a todas las noticias</button>
+            <h1 id="detalle-titulo" style="color:#2e7d32;"></h1>
+            <div style="margin: 10px 0; color:#666; font-size:0.9rem;">
+                Publicado el <span id="detalle-fecha"></span> | Por: <strong id="detalle-autor"></strong>
+            </div>
+            <img id="detalle-imagen" src="" alt="" style="width:100%; max-height:450px; object-fit:cover; border-radius:8px; margin:20px 0;">
+            <div id="detalle-cuerpo" style="font-size:1.1rem; line-height:1.8; color:#333;"></div>
+        </article>
+
+    </main>
+
+    <script src="noticias.js"></script>
+</body>
+</html>
