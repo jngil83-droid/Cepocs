@@ -2,6 +2,8 @@ backend:
   name: github
   repo: jngil83-droid/Cepocs
   branch: main
+  base_url: https://decap-cms-oauth-gatekeeper.vercel.app
+  auth_endpoint: api/auth
 
 # Configuración de los archivos multimedia
 media_folder: "assets/img/noticias"
