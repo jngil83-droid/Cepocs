@@ -5,47 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panel de Administración | CEPOCS</title>
   
-  <!-- Llamamos al archivo local que creamos en tu servidor -->
-  <script type="module" src="./decap-cms.js"></script>
+  <!-- Cargamos el script oficial de Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
-  <div id="nc-root"></div>
-  <script>
-    // Configuración local nativa para esquivar las restricciones de Cloudflare
-    window.addEventListener('load', () => {
-      if (typeof CMS !== 'undefined') {
-        CMS.init({
-          config: {
-            backend: {
-              name: 'github',
-              repo: 'jngil83-droid/Cepocs',
-              branch: 'main',
-              local_backend: true
-            },
-            media_folder: 'assets/img/noticias',
-            public_folder: '/assets/img/noticias',
-            collections: [
-              {
-                name: 'noticias',
-                label: 'Noticias',
-                folder: 'content/noticias',
-                create: true,
-                slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-                format: 'json',
-                fields: [
-                  { label: 'Titular', name: 'title', widget: 'string' },
-                  { label: 'Fecha de Publicación', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' },
-                  { label: 'Autor/a', name: 'author', widget: 'string', default: 'CEPOCS' },
-                  { label: 'Foto de Portada', name: 'image', widget: 'image', required: true },
-                  { label: 'Resumen Corto', name: 'description', widget: 'string' },
-                  { label: 'Cuerpo de la Noticia', name: 'body', widget: 'markdown' }
-                ]
-              }
-            ]
-          }
-        });
-      }
-    });
-  </script>
+  <!-- Dejamos el cuerpo limpio para que lea directamente el config.yml de tu servidor -->
 </body>
 </html>
