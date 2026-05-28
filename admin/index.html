@@ -4,41 +4,60 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panel de Administración | CEPOCS</title>
-  <!-- Cargamos el script oficial de Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Cambiamos a la red CDNJS/jsDelivr que es compatible al 100% con Cloudflare -->
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.12/dist/decap-cms.js"></script>
 </head>
 <body>
+  <!-- Contenedor de seguridad por si hay un error visual -->
+  <div id="nc-root">
+    <p style="text-align: center; margin-top: 50px; font-family: sans-serif; color: #666;">
+      Cargando el panel de administración de CEPOCS...
+    </p>
+  </div>
+
   <script>
-    // Forzamos al CMS a inicializarse con tu configuración directamente en el navegador
-    CMS.init({
-      config: {
-        backend: {
-          name: 'github',
-          repo: 'jngil83-droid/Cepocs',
-          branch: 'main',
-          local_backend: true
-        },
-        media_folder: 'assets/img/noticias',
-        public_folder: '/assets/img/noticias',
-        collections: [
-          {
-            name: 'noticias',
-            label: 'Noticias',
-            folder: 'content/noticias',
-            create: true,
-            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-            format: 'json',
-            fields: [
-              { label: 'Titular', name: 'title', widget: 'string' },
-              { label: 'Fecha de Publicación', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' },
-              { label: 'Autor/a', name: 'author', widget: 'string', default: 'CEPOCS' },
-              { label: 'Foto de Portada', name: 'image', widget: 'image', required: true },
-              { label: 'Resumen Corto', name: 'description', widget: 'string' },
-              { label: 'Cuerpo de la Noticia', name: 'body', widget: 'markdown' }
-            ]
-          }
-        ]
+    // Esperamos a que el script cargue por completo en el navegador
+    window.addEventListener('load', () => {
+      if (typeof CMS === 'undefined') {
+        document.getElementById('nc-root').innerHTML = 
+          "<p style='text-align:center; color:red; margin-top:50px; font-family:sans-serif;'>" +
+          "⚠️ El navegador bloqueó el script de administración. Revisa los permisos de Cloudflare." +
+          "</p>";
+        return;
       }
+
+      // Inicialización limpia
+      CMS.init({
+        config: {
+          backend: {
+            name: 'github',
+            repo: 'jngil83-droid/Cepocs',
+            branch: 'main',
+            local_backend: true
+          },
+          media_folder: 'assets/img/noticias',
+          public_folder: '/assets/img/noticias',
+          collections: [
+            {
+              name: 'noticias',
+              label: 'Noticias',
+              folder: 'content/noticias',
+              create: true,
+              slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+              format: 'json',
+              fields: [
+                { label: 'Titular', name: 'title', widget: 'string' },
+                { label: 'Fecha de Publicación', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD' },
+                { label: 'Autor/a', name: 'author', widget: 'string', default: 'CEPOCS' },
+                { label: 'Foto de Portada', name: 'image', widget: 'image', required: true },
+                { label: 'Resumen Corto', name: 'description', widget: 'string' },
+                { label: 'Cuerpo de la Noticia', name: 'body', widget: 'markdown' }
+              ]
+            }
+          ]
+        }
+      });
     });
   </script>
 </body>
