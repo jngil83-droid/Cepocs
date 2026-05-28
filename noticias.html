@@ -85,6 +85,25 @@
   </script>
 
   <script src="noticias.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const botonTresRayas = document.getElementById('menuToggle');
+      const listaEnlaces = document.getElementById('navLinks');
+
+      if (botonTresRayas && listaEnlaces) {
+        botonTresRayas.addEventListener('click', (e) => {
+          e.stopPropagation();
+          listaEnlaces.classList.toggle('active');
+          botonTresRayas.classList.toggle('active');
+        });
+      }
+    });
+
+    function volverAlListado() {
+      document.getElementById('vista-nav-detalle').classList.add('hidden');
+      document.getElementById('vista-listado').classList.remove('hidden');
+    }
+  </script>
 
 </body>
 </html>
