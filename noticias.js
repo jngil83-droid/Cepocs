@@ -1,5 +1,5 @@
 // =======================================================
-// 📰 MOTOR DE LECTURA PARA DECAP CMS (Formatos JSON)
+// 📰 MOTOR DE LECTURA ADAPTADO A TU CONFIG.YML DE DECAP CMS
 // =======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!gridNoticias) return;
 
-  // Ruta hacia la carpeta interna donde Decap CMS guardará las noticias
+  // Ruta hacia la carpeta interna donde Decap CMS guarda las noticias
   const URL_API_GITHUB = "https://api.github.com/repos/jngil83-droid/Cepocs/contents/content/noticias";
 
   // Llamar a la API de GitHub para listar los archivos de noticias
@@ -56,32 +56,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "noticia-card";
     
-    // Estilos base para que luzcan profesionales en cuadrícula
+    // Estilos base para las tarjetas en la cuadrícula
     tarjeta.style.cssText = "border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s;";
 
-    // Si no hay imagen, pone una por defecto
-    const imgUrl = noticia.imagen || 'https://via.placeholder.com/600x400?text=CEPOCS';
+    // Mapeo de tus campos de config.yml (image, title, date, description)
+    const imgUrl = noticia.image || 'https://via.placeholder.com/600x400?text=CEPOCS';
+    const tituloNoticia = noticia.title || 'Sin título';
+    const resumenNoticia = noticia.description || '';
 
     tarjeta.innerHTML = `
-      <img src="${imgUrl}" alt="${noticia.titulo}" style="width:100%; height:200px; object-fit:cover;">
+      <img src="${imgUrl}" alt="${tituloNoticia}" style="width:100%; height:200px; object-fit:cover;">
       <div style="padding: 15px; flex-grow: 1; display: flex; flex-direction: column; font-family: 'Inter', sans-serif;">
-        <span style="font-size: 0.8rem; color: #888; margin-bottom: 5px;">${noticia.fecha ? formatearFecha(noticia.fecha) : ''}</span>
-        <h3 style="margin: 0 0 10px 0; color: #2e7d32; font-family: 'Work Sans', sans-serif; font-size: 1.2rem; line-height: 1.4;">${noticia.titulo}</h3>
-        <p style="margin: 0 0 15px 0; color: #555; font-size: 0.95rem; line-height: 1.5;">${noticia.resumen || ''}</p>
+        <span style="font-size: 0.8rem; color: #888; margin-bottom: 5px;">${noticia.date ? formatearFecha(noticia.date) : ''}</span>
+        <h3 style="margin: 0 0 10px 0; color: #2e7d32; font-family: 'Work Sans', sans-serif; font-size: 1.2rem; line-height: 1.4;">${tituloNoticia}</h3>
+        <p style="margin: 0 0 15px 0; color: #555; font-size: 0.95rem; line-height: 1.5;">${resumenNoticia}</p>
         <span style="margin-top: auto; color: #2e7d32; font-weight: 600; font-size: 0.9rem;">Leer más →</span>
       </div>
     `;
 
     // Evento al pulsar en la tarjeta para abrir la vista completa
     tarjeta.addEventListener("click", () => {
-      detalleTitulo.textContent = noticia.titulo;
-      detalleFecha.textContent = noticia.fecha ? formatearFecha(noticia.fecha) : '';
-      detalleAutor.textContent = noticia.autor || "Equipo CEPOCS";
+      detalleTitulo.textContent = tituloNoticia;
+      detalleFecha.textContent = noticia.date ? formatearFecha(noticia.date) : '';
+      detalleAutor.textContent = noticia.author || "CEPOCS";
       detalleImagen.src = imgUrl;
-      detalleImagen.alt = noticia.titulo;
+      detalleImagen.alt = tituloNoticia;
       
-      // Convierte los saltos de línea del texto en párrafos HTML reales
-      detalleCuerpo.innerHTML = (noticia.cuerpo || "").split("\n").map(p => `<p style='margin-bottom:15px; text-align:justify;'>${p}</p>`).join("");
+      // Mapeo del campo cuerpo (body) convirtiendo los saltos de línea en párrafos
+      const cuerpoNoticia = noticia.body || "";
+      detalleCuerpo.innerHTML = cuerpoNoticia.split("\n").map(p => {
+        if(p.trim() === "") return "";
+        return `<p style='margin-bottom:15px; text-align:justify;'>${p}</p>`;
+      }).join("");
 
       // Alternar las vistas
       vistaListado.classList.add("hidden");
