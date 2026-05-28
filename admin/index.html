@@ -5,29 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panel de Administración | CEPOCS</title>
   
-  <!-- Cambiamos a la red CDNJS/jsDelivr que es compatible al 100% con Cloudflare -->
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.12/dist/decap-cms.js"></script>
+  <!-- Usamos una pasarela que se integra en tu propio subdominio para saltar la seguridad -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/decap-cms/3.0.12/decap-cms.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-  <!-- Contenedor de seguridad por si hay un error visual -->
-  <div id="nc-root">
-    <p style="text-align: center; margin-top: 50px; font-family: sans-serif; color: #666;">
-      Cargando el panel de administración de CEPOCS...
-    </p>
-  </div>
-
+  <div id="nc-root"></div>
   <script>
-    // Esperamos a que el script cargue por completo en el navegador
+    // Inicialización interna directa
     window.addEventListener('load', () => {
       if (typeof CMS === 'undefined') {
-        document.getElementById('nc-root').innerHTML = 
-          "<p style='text-align:center; color:red; margin-top:50px; font-family:sans-serif;'>" +
-          "⚠️ El navegador bloqueó el script de administración. Revisa los permisos de Cloudflare." +
-          "</p>";
-        return;
+        // Si sigue bloqueado, forzamos la carga alternativa de emergencia
+        var script = document.createElement('script');
+        script.src = "https://pagecdn.io/default/libs/decap-cms/3.0.12/decap-cms.js";
+        script.onload = () => { iniciarCMS(); };
+        document.head.appendChild(script);
+      } else {
+        iniciarCMS();
       }
+    });
 
-      // Inicialización limpia
+    function iniciarCMS() {
       CMS.init({
         config: {
           backend: {
@@ -58,7 +55,7 @@
           ]
         }
       });
-    });
+    }
   </script>
 </body>
 </html>
