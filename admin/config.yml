@@ -1,0 +1,6 @@
+backend:
+  name: github
+  repo: jngil83-droid/Cepocs
+  branch: main
+
+local_backend: true
