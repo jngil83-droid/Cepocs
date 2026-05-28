@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panel de Administración | CEPOCS</title>
   
-  <!-- Llamamos al archivo local que acabamos de crear en tu servidor -->
+  <!-- Llamamos al archivo local que creamos en tu servidor -->
   <script type="module" src="./decap-cms.js"></script>
 </head>
 <body>
   <div id="nc-root"></div>
   <script>
-    // Configuración local nativa para esquivar las restricciones
+    // Configuración local nativa para esquivar las restricciones de Cloudflare
     window.addEventListener('load', () => {
       if (typeof CMS !== 'undefined') {
         CMS.init({
