@@ -54,8 +54,8 @@
     </div>
   </header>
 
-  <main style="background: var(--verde-soft); padding: 70px 0; min-height: 75vh;">
-    <div class="container">
+  <main style="background: var(--verde-soft); padding: 70px 0; min-height: 88vh; display: flex; flex-direction: column; justify-content: center;">
+    <div class="container" style="width: 100%;">
       
       <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800;">
         NOTICIAS Y ACTUALIDAD
@@ -65,11 +65,12 @@
         Explora las últimas novedades, crónicas de terreno y avances socioproductivos del equipo de CEPOCS en la región.
       </div>
 
-      <div id="espacioNoticias" style="background: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4; min-height: 300px;">
+      <div id="espacioNoticias" style="background: white; padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4; min-height: 450px; display: flex; align-items: center; justify-content: center;">
         
-        <div style="text-align: center; color: var(--gris); padding: 3rem; font-size: 0.9rem;">
-          <i class="fas fa-newspaper" style="color: var(--naranja); font-size: 2rem; margin-bottom: 0.8rem; display: block;"></i>
-          <p>Módulo de noticias preparado para integración.</p>
+        <div style="text-align: center; color: var(--gris); font-size: 0.9rem;">
+          <i class="fas fa-newspaper" style="color: var(--naranja); font-size: 2.5rem; margin-bottom: 1rem; display: block;"></i>
+          <p style="font-weight: 600; margin-bottom: 0.3rem;">Módulo de noticias preparado para integración.</p>
+          <p style="color: #999; font-size: 0.8rem;">Reemplaza este bloque interno con las dos líneas de tu código de Elfsight.</p>
         </div>
 
       </div>
@@ -135,7 +136,6 @@
       });
     }
 
-    // Aceptar cookies básico para esta página independiente
     const banner = document.getElementById('cookieBanner');
     const btnAcc = document.getElementById('acceptCookies');
     if(btnAcc && banner) {
