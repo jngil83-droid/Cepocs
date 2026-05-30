@@ -107,26 +107,27 @@
 
   <h1 class="rrss-title">Redes Sociales CEPOCS</h1>
   <p class="rrss-sub">
-    Aquí puedes ver nuestras últimas publicaciones en Facebook e Instagram.
+    Síguenos en nuestras redes oficiales para ver todas las novedades.
   </p>
 
   <div class="rrss-grid">
 
-    <!-- FACEBOOK -->
+    <!-- FACEBOOK (robusto) -->
     <div class="rrss-card">
       <h3><i class="fab fa-facebook"></i> Facebook</h3>
+
       <div class="rrss-content">
 
-        <iframe 
-          src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/cepocs.cepocs/&tabs=timeline&width=340&height=500"
+        <iframe
+          src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/cepocs.cepocs/&tabs=timeline&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
           height="500"
+          style="width:100%;border:none;overflow:hidden"
           scrolling="no"
-          allowfullscreen>
+          frameborder="0"
+          allowfullscreen="true">
         </iframe>
 
         <div class="fallback">
-          Si Facebook no carga:
-          <br>
           <a class="btn-rrss" href="https://www.facebook.com/cepocs.cepocs/" target="_blank">
             Abrir Facebook
           </a>
@@ -135,27 +136,29 @@
       </div>
     </div>
 
-    <!-- INSTAGRAM -->
+    <!-- INSTAGRAM (correcto y estable) -->
     <div class="rrss-card">
       <h3><i class="fab fa-instagram"></i> Instagram</h3>
+
       <div class="rrss-content">
 
         <div class="fallback">
-          Instagram no permite siempre embeds públicos.
-          <br>
-          Últimas publicaciones en su perfil oficial.
-          <br>
+          Instagram no permite incrustación completa sin API oficial.
+          <br><br>
 
           <a class="btn-rrss" href="https://www.instagram.com/cepocs/" target="_blank">
             Abrir Instagram
           </a>
+
+          <p style="margin-top:15px;font-size:0.9rem;color:#777;">
+            Aquí verás las publicaciones directamente en la app o web de Instagram.
+          </p>
         </div>
 
       </div>
     </div>
 
   </div>
-
 </section>
 
 <footer style="text-align:center;padding:30px;">
