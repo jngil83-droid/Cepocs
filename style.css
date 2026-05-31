@@ -8,13 +8,12 @@ VARIABLES
   --naranja:#d98c2b;
   --texto:#1f2e3a;
   --gris:#4a5568;
-
   --shadow:0 10px 30px rgba(0,0,0,0.08);
-  --radius:28px;
+  --radius:32px;
 }
 
 /* =========================
-RESET GLOBAL
+RESET
 ========================= */
 *{
   margin:0;
@@ -39,7 +38,7 @@ body{
 }
 
 /* =========================
-HEADER + NAV
+HEADER (MANTENIENDO EFECTO ORIGINAL)
 ========================= */
 header{
   position:sticky;
@@ -54,9 +53,9 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:1rem 0;
   flex-wrap:wrap;
   gap:1rem;
-  padding:1rem 0;
 }
 
 .logo{
@@ -103,9 +102,7 @@ nav{
   color:var(--naranja);
 }
 
-/* =========================
-DROPDOWN
-========================= */
+/* DROPDOWN EXACTO ORIGINAL */
 .dropdown{
   position:relative;
 }
@@ -113,7 +110,7 @@ DROPDOWN
 .dropdown > a{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
 }
 
 .dropdown-content{
@@ -122,22 +119,19 @@ DROPDOWN
   top:100%;
   left:0;
   min-width:180px;
-  background:var(--verde);
+  background:#0f4c3a;
   border-radius:12px;
   padding:0.5rem 0;
-  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  box-shadow:0 8px 16px rgba(0,0,0,0.2);
   flex-direction:column;
-}
-
-.dropdown:hover .dropdown-content{
-  display:flex;
+  z-index:1;
 }
 
 .dropdown-content a{
-  padding:0.6rem 1rem;
+  padding:0.5rem 1rem;
   color:#fff;
   font-size:0.85rem;
-  transition:0.2s;
+  display:block;
 }
 
 .dropdown-content a:hover{
@@ -145,8 +139,12 @@ DROPDOWN
   border-radius:8px;
 }
 
+.dropdown:hover .dropdown-content{
+  display:flex;
+}
+
 /* =========================
-BOTONES
+BOTONES (SIN CAMBIOS VISUALES)
 ========================= */
 .btn{
   display:inline-flex;
@@ -155,9 +153,10 @@ BOTONES
   padding:12px 28px;
   border-radius:999px;
   font-weight:600;
-  text-decoration:none;
-  transition:0.25s;
   font-size:0.9rem;
+  transition:0.25s;
+  cursor:pointer;
+  text-decoration:none;
 }
 
 .btn-primary{
@@ -173,6 +172,7 @@ BOTONES
 .btn-outline{
   border:2px solid #fff;
   color:#fff;
+  background:transparent;
 }
 
 .btn-outline:hover{
@@ -181,7 +181,7 @@ BOTONES
 }
 
 /* =========================
-FLOAT BUTTONS
+FLOAT BUTTONS (IMPORTANTE CONSERVAR ESTILO)
 ========================= */
 .float-buttons{
   position:fixed;
@@ -200,8 +200,8 @@ FLOAT BUTTONS
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:1.8rem;
   color:#fff;
-  font-size:1.6rem;
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
   transition:0.3s;
 }
@@ -248,7 +248,7 @@ SCROLL TOP
 }
 
 /* =========================
-HERO
+HERO (RECUPERADO ORIGINAL COMPLETO)
 ========================= */
 .hero{
   background:
@@ -264,9 +264,9 @@ HERO
 .hero-logo{
   max-width:160px;
   margin:0 auto 1rem;
-  padding:8px;
-  border-radius:20px;
   background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:8px;
 }
 
 .hero-tag{
@@ -292,9 +292,7 @@ HERO
   text-align:justify;
 }
 
-/* =========================
-FEATURES
-========================= */
+/* FEATURES (RECUPERADO EFECTO OSCURO REAL) */
 .features-grid{
   display:flex;
   flex-wrap:wrap;
@@ -306,9 +304,8 @@ FEATURES
 .feature-card{
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(8px);
-  color:#fff;
-  padding:1.2rem;
   border-radius:20px;
+  padding:1.2rem;
   flex:1;
   min-width:220px;
   text-align:center;
@@ -318,8 +315,8 @@ FEATURES
 }
 
 .feature-card:hover{
-  transform:translateY(-3px);
   background:rgba(0,0,0,0.85);
+  transform:translateY(-3px);
 }
 
 .feature-card i{
@@ -328,9 +325,7 @@ FEATURES
   margin-bottom:0.8rem;
 }
 
-/* =========================
-IMPACTO
-========================= */
+/* IMPACTO (RECUPERADO COMPLETO VISUAL) */
 .impacto{
   background:var(--verde);
   padding:60px 0;
@@ -365,13 +360,11 @@ IMPACTO
 }
 
 .impact-card p{
-  font-size:0.85rem;
   color:#fff;
+  font-size:0.85rem;
 }
 
-/* =========================
-SECCIONES
-========================= */
+/* SECCIONES */
 section{
   padding:70px 0;
 }
@@ -380,7 +373,6 @@ section{
   font-size:2rem;
   text-align:center;
   color:var(--verde);
-  margin-bottom:1rem;
 }
 
 .section-sub{
@@ -388,18 +380,14 @@ section{
   max-width:760px;
   margin:0 auto 2rem;
   color:var(--gris);
-  font-size:0.95rem;
 }
 
-/* =========================
-EJES
-========================= */
+/* EJES (RECUPERADO TARJETAS ORIGINALES) */
 .ejes-grid{
   display:flex;
   flex-wrap:wrap;
   gap:2rem;
   justify-content:center;
-  margin-top:2rem;
 }
 
 .eje-card{
@@ -433,7 +421,6 @@ RESPONSIVE
     background:var(--verde);
     padding:0.8rem;
     border-radius:20px;
-    margin-top:0.5rem;
   }
 
   .nav-links.show{
@@ -444,11 +431,11 @@ RESPONSIVE
     display:block;
   }
 
-  .hero h1{
-    font-size:1.5rem;
-  }
-
   .feature-card{
     min-width:100%;
+  }
+
+  .hero h1{
+    font-size:1.5rem;
   }
 }
