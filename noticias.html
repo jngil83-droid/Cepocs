@@ -25,14 +25,14 @@
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
       border-bottom: 2px solid #e2e8e4;
       padding-bottom: 0.5rem;
     }
     .tab-btn {
       background: none;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.5rem 1.5rem;
       font-family: 'Work Sans', sans-serif;
       font-size: 1.05rem;
       font-weight: 600;
@@ -69,12 +69,12 @@
       to { opacity: 1; transform: translateY(0); }
     }
     
-    /* Contenedor de notas de prensa sin imágenes */
+    /* Contenedor de notas de prensa */
     .prensa-lista {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      max-width: 900px;
+      gap: 1.2rem;
+      max-width: 850px;
       margin: 0 auto;
     }
     .prensa-item {
@@ -89,10 +89,25 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .prensa-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       border-color: var(--verde);
     }
+
+    /* Logos tipográficos estilizados para los medios */
+    .media-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+    .badge-eldinero { background-color: #1e4620; } /* Verde oscuro institucional */
+    .badge-efeminista { background-color: #632a7a; } /* Morado Efeminista */
+    .badge-listin { background-color: #0056b3; } /* Azul Listín Diario */
+    .badge-mercurio { background-color: #d32f2f; } /* Rojo El Mercurio */
     
     html {
       scroll-behavior: smooth;
@@ -142,14 +157,15 @@
     </div>
   </header>
 
-  <main style="background: var(--verde-soft); padding: 60px 0; min-height: 85vh;">
+  <!-- Se redujo el padding de 60px a 30px para eliminar el espacio excesivo inicial -->
+  <main style="background: var(--verde-soft); padding: 30px 0; min-height: 80vh;">
     <div class="container" style="width: 100%;" id="seccion-principal-noticias">
       
-      <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800;">
+      <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 0.3rem; font-weight: 800;">
         NOTICIAS Y ACTUALIDAD
       </h1>
       
-      <div class="section-sub" style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem auto; color: var(--gris); font-size: 0.95rem;">
+      <div class="section-sub" style="text-align: center; max-width: 760px; margin: 0 auto 1.5rem auto; color: var(--gris); font-size: 0.95rem;">
         Explora las últimas novedades, crónicas de terreno y avances socioproductivos del equipo de CEPOCS en la región.
       </div>
 
@@ -159,11 +175,12 @@
         <button id="tab-btn-medios" class="tab-btn" onclick="switchTab('medios')">En los Medios</button>
       </div>
 
-      <div style="background: white; padding: 2.5rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4; min-height: 450px;">
+      <!-- Reducido el padding interno de la caja blanca para compactar el diseño -->
+      <div style="background: white; padding: 1.8rem 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4;">
         
         <!-- PANEL: NOTICIAS PROPIAS -->
         <div id="panel-propias" class="news-content-panel active">
-          <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--gris); font-size: 0.95rem;">
+          <div style="text-align: center; max-width: 600px; margin: 0 auto 1.5rem auto; color: var(--gris); font-size: 0.95rem;">
             Entérate de nuestras actividades, talleres e historias directamente desde las comunidades de la Cordillera Septentrional.
           </div>
           <div>
@@ -172,9 +189,9 @@
           </div>
         </div>
 
-        <!-- PANEL: CEPOCS EN LOS MEDIOS (LISTADO SIN IMÁGENES) -->
+        <!-- PANEL: CEPOCS EN LOS MEDIOS -->
         <div id="panel-medios" class="news-content-panel">
-          <div style="text-align: center; color: var(--gris); max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 0.95rem; line-height: 1.6;">
+          <div style="text-align: center; color: var(--gris); max-width: 600px; margin: 0 auto 1.5rem auto; font-size: 0.95rem; line-height: 1.6;">
             Reportajes especiales y cobertura de la prensa nacional e internacional sobre el impacto de nuestros proyectos.
           </div>
           
@@ -183,45 +200,45 @@
             <!-- NOTICIA 1: elDinero -->
             <a href="https://eldinero.com.do/227124/mujeres-del-campo-dominicano-apuestan-por-fruta-y-cafe-para-un-futuro-mejor/" target="_blank" rel="noopener noreferrer" class="prensa-item">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-                <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">elDinero</span>
-                <span style="color: #999; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
+                <span class="media-badge badge-eldinero">elDinero</span>
+                <span style="color: #888; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
               </div>
-              <h3 style="margin: 0 0 0.6rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
-              <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">El reportaje destaca cómo las mujeres rurales de la Cordillera Septentrional transforman la agricultura local mediante cultivos sostenibles apoyados por CEPOCS.</p>
-              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; margin-top: auto;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
+              <p style="margin: 0 0 0.8rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">El reportaje destaca cómo las mujeres rurales de la Cordillera Septentrional transforman la agricultura local mediante cultivos sostenibles apoyados por CEPOCS.</p>
+              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
             </a>
 
             <!-- NOTICIA 2: Efeminista -->
             <a href="https://efeminista.com/campesinas-republica-dominicana/" target="_blank" rel="noopener noreferrer" class="prensa-item">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-                <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Efeminista (Agencia EFE)</span>
-                <span style="color: #999; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 24 Abr, 2023</span>
+                <span class="media-badge badge-efeminista">Efeminista (EFE)</span>
+                <span style="color: #888; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 24 Abr, 2023</span>
               </div>
-              <h3 style="margin: 0 0 0.6rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Las campesinas dominicanas que combaten el cambio climático con café</h3>
-              <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">Una mirada profunda al liderazgo femenino y el empoderamiento económico de las productoras rurales en alianza estratégica con los proyectos de CEPOCS.</p>
-              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; margin-top: auto;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Las campesinas dominicanas que combaten el cambio climático con café</h3>
+              <p style="margin: 0 0 0.8rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">Una mirada profunda al liderazgo femenino y el empoderamiento económico de las productoras rurales en alianza estratégica con los proyectos de CEPOCS.</p>
+              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
             </a>
 
             <!-- NOTICIA 3: Listín Diario -->
             <a href="https://listindiario.com/la-vida/2023/04/23/772859/mujeres-del-campo-dominicano-apuestan-por-fruta-y-cafe-para-un-futuro-mejor.html" target="_blank" rel="noopener noreferrer" class="prensa-item">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-                <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Listín Diario</span>
-                <span style="color: #999; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
+                <span class="media-badge badge-listin">Listín Diario</span>
+                <span style="color: #888; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
               </div>
-              <h3 style="margin: 0 0 0.6rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
-              <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">El diario nacional visibiliza las crónicas de resiliencia y el impacto socioeconómico de las comunidades agrícolas integradas en la Cordillera.</p>
-              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; margin-top: auto;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
+              <p style="margin: 0 0 0.8rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">El diario nacional visibiliza las crónicas de resiliencia y el impacto socioeconómico de las comunidades agrícolas integradas en la Cordillera.</p>
+              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
             </a>
 
             <!-- NOTICIA 4: El Mercurio -->
             <a href="https://elmercurio.com.ec/temas/2023/04/23/apuestan-por-fruta-y-cafe-para-un-futuro-mejor/" target="_blank" rel="noopener noreferrer" class="prensa-item">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-                <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">El Mercurio</span>
-                <span style="color: #999; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
+                <span class="media-badge badge-mercurio">El Mercurio</span>
+                <span style="color: #888; font-size: 0.8rem;"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
               </div>
-              <h3 style="margin: 0 0 0.6rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Apuestan por fruta y café para un futuro mejor en Dominicana</h3>
-              <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">Cobertura internacional que expone el modelo socioproductivo de la asociación de mujeres y la asistencia técnica de educación popular de CEPOCS.</p>
-              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; margin-top: auto;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #222; font-weight: 600; line-height: 1.4;">Apuestan por fruta y café para un futuro mejor en Dominicana</h3>
+              <p style="margin: 0 0 0.8rem 0; font-size: 0.9rem; color: var(--gris); line-height: 1.5;">Cobertura internacional que expone el modelo socioproductivo de la asociación de mujeres y la asistencia técnica de educación popular de CEPOCS.</p>
+              <span style="color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem;">Leer artículo en el diario <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></span>
             </a>
 
           </div>
@@ -253,7 +270,6 @@
   <div id="cookieBanner" class="cookie-banner"><p>🍪 Este sitio web utiliza cookies para garantizar su correcto funcionamiento. Al continuar navegando, acepta su uso. Para más información, consulte nuestra <a href="#" id="cookiePrivacyLink">Política de Privacidad</a>.</p><button id="acceptCookies">Aceptar</button></div>
 
   <script>
-    // Lógica interactiva para cambiar entre Nuestras Noticias y En los Medios
     function switchTab(tabName) {
       document.querySelectorAll('.news-content-panel').forEach(panel => panel.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -267,7 +283,6 @@
       }
     }
 
-    // Menú móvil responsive y control de clics
     const menuToggle = document.getElementById('menuToggle');
     const navLinksMenu = document.getElementById('navLinks');
 
