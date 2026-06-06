@@ -19,9 +19,80 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos específicos para la sección de navegación interna de noticias */
+    .news-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid #e2e8e4;
+      padding-bottom: 0.5rem;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gris);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .tab-btn:hover {
+      color: var(--verde);
+    }
+    .tab-btn.active {
+      color: var(--verde);
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--verde);
+      border-radius: 2px;
+    }
+    .news-content-panel {
+      display: none;
+    }
+    .news-content-panel.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-img-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s ease;
+    }
+    .prensa-card:hover .card-img-container img {
+      transform: scale(1.05);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body>
-
   <header>
     <div class="container">
       <nav>
@@ -35,6 +106,226 @@
             <a href="index.html#inicio">QUIÉNES SOMOS <i class="fas fa-chevron-down"></i></a>
             <div class="dropdown-content">
               <a href="index.html#inicio">Nosotr@s</a>
+              <a href="index.html#capacidades">Ejes y capacidades</a>
+            </div>
+          </li>
+          <li><a href="index.html#aliados">ENTIDADES ALIADAS</a></li>
+          <li><a href="index.html#transparencia">TRANSPARENCIA</a></li>
+          <li><a href="index.html#proyectos">PROYECTOS</a></li>
+          
+          <!-- NUEVO DESPLEGABLE: NOTICIAS -->
+          <li class="dropdown">
+            <a href="#seccion-principal-noticias">NOTICIAS <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="#seccion-principal-noticias" onclick="switchTab('propias')">Noticias Propias</a>
+              <a href="#seccion-principal-noticias" onclick="switchTab('medios')">CEPOCS en los Medios</a>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#">MULTIMEDIA <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="index.html#fotos">Fotos</a>
+              <a href="index.html#videos">Videos</a>
+            </div>
+          </li>
+          <li><a href="index.html#contacto">CONTACTO</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main style="background: var(--verde-soft); padding: 60px 0; min-height: 85vh;">
+    <div class="container" style="width: 100%;" id="seccion-principal-noticias">
+      <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 2rem; font-weight: 800;">
+        NOTICIAS
+      </h1>
+
+      <!-- Pestañas de Navegación Interna -->
+      <div class="news-tabs">
+        <button id="tab-btn-propias" class="tab-btn active" onclick="switchTab('propias')">Nuestras Noticias </button>
+        <button id="tab-btn-medios" class="tab-btn" onclick="switchTab('medios')">En los Medios</button>
+      </div>
+
+      <div style="background: white; padding: 2.5rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4;">
+        
+        <!-- PANEL: NOTICIAS PROPIAS -->
+        <div id="panel-propias" class="news-content-panel active">
+          <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--gris); font-size: 0.95rem;">
+            Entérate de nuestras actividades, talleres e historias...
+          </div>
+          <div>
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-f40a2137-09d9-40ea-bbff-395e0f30d965" data-elfsight-app-lazy></div>
+          </div>
+        </div>
+
+        <!-- PANEL: CEPOCS EN LOS MEDIOS -->
+        <div id="panel-medios" class="news-content-panel">
+          <div style="text-align: center; color: var(--gris); max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 0.95rem; line-height: 1.6;">
+            Cobertura de la prensa nacional e internacional
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            
+            <!-- NOTICIA 1: elDinero -->
+            <a href="https://eldinero.com.do/227124/mujeres-del-campo-dominicano-apuestan-por-fruta-y-cafe-para-un-futuro-mejor/" target="_blank" rel="noopener noreferrer" class="prensa-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; border: 1px solid #e2e8e4; border-radius: var(--radius); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; background: #fdfdfd;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 15px rgba(0,0,0,0.05)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+              <div class="card-img-container">
+                <img src="https://eldinero.com.do/wp-content/uploads/Mujeres-del-campo.jpg" alt="Mujeres trabajando en el campo rural dominicano">
+              </div>
+              <div style="padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                  <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">elDinero</span>
+                  <span style="color: #999; font-size: 0.8rem;">23 Abr, 2023</span>
+                </div>
+                <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #222; font-weight: 600; line-height: 1.4;">Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gris); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">El reportaje destaca cómo las mujeres rurales de la Cordillera Septentrional transforman la agricultura local mediante cultivos sostenibles apoyados por CEPOCS.</p>
+                <span style="margin-top: auto; padding-top: 1rem; color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">Leer artículo completo <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></span>
+              </div>
+            </a>
+
+            <!-- NOTICIA 2: Efeminista -->
+            <a href="https://efeminista.com/campesinas-republica-dominicana/" target="_blank" rel="noopener noreferrer" class="prensa-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; border: 1px solid #e2e8e4; border-radius: var(--radius); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; background: #fdfdfd;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 15px rgba(0,0,0,0.05)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+              <div class="card-img-container">
+                <img src="https://efeminista.com/wp-content/uploads/2023/04/Campesinas-Dominicanas-EFE.jpg" alt="Campesinas recolectoras en República Dominicana">
+              </div>
+              <div style="padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                  <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Efeminista</span>
+                  <span style="color: #999; font-size: 0.8rem;">24 Abr, 2023</span>
+                </div>
+                <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #222; font-weight: 600; line-height: 1.4;">Las campesinas dominicanas que combaten el cambio climático con café</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gris); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">Una mirada profunda al liderazgo femenino y el empoderamiento económico de las productoras rurales en alianza estratégica con los proyectos de CEPOCS.</p>
+                <span style="margin-top: auto; padding-top: 1rem; color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">Leer artículo completo <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></span>
+              </div>
+            </a>
+
+            <!-- NOTICIA 3: Listín Diario -->
+            <a href="https://listindiario.com/la-vida/2023/04/23/772859/mujeres-del-campo-dominicano-apuestan-por-fruta-y-cafe-para-un-futuro-mejor.html" target="_blank" rel="noopener noreferrer" class="prensa-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; border: 1px solid #e2e8e4; border-radius: var(--radius); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; background: #fdfdfd;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 15px rgba(0,0,0,0.05)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+              <div class="card-img-container">
+                <img src="https://listindiario.com/files/main_thumbnail/uploads/2023/04/23/644558ec40081.jpeg" alt="Mujeres rurales y producción sostenible Listín Diario">
+              </div>
+              <div style="padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                  <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Listín Diario</span>
+                  <span style="color: #999; font-size: 0.8rem;">23 Abr, 2023</span>
+                </div>
+                <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #222; font-weight: 600; line-height: 1.4;">Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gris); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">El diario nacional visibiliza las crónicas de resiliencia y el impacto socioeconómico de las comunidades agrícolas integradas en la Cordillera.</p>
+                <span style="margin-top: auto; padding-top: 1rem; color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">Leer artículo completo <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></span>
+              </div>
+            </a>
+
+            <!-- NOTICIA 4: El Mercurio -->
+            <a href="https://elmercurio.com.ec/temas/2023/04/23/apuestan-por-fruta-y-cafe-para-un-futuro-mejor/" target="_blank" rel="noopener noreferrer" class="prensa-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; border: 1px solid #e2e8e4; border-radius: var(--radius); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; background: #fdfdfd;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 15px rgba(0,0,0,0.05)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+              <div class="card-img-container">
+                <img src="https://elmercurio.com.ec/wp-content/uploads/2023/04/Cafe-Frutas-Mujeres.jpg" alt="Café y agricultura agroecológica femenina">
+              </div>
+              <div style="padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                  <span style="background: #e2f0e6; color: var(--verde); font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">El Mercurio</span>
+                  <span style="color: #999; font-size: 0.8rem;">23 Abr, 2023</span>
+                </div>
+                <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #222; font-weight: 600; line-height: 1.4;">Apuestan por fruta y café para un futuro mejor en Dominicana</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--gris); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">Cobertura internacional que expone el modelo socioproductivo de la asociación de mujeres y la asistencia técnica de educación popular de CEPOCS.</p>
+                <span style="margin-top: auto; padding-top: 1rem; color: var(--verde); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">Leer artículo completo <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/cepocs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© <span id="currentYear">2026</span> CEPOCS | FUNDADO EN 1985 | RNC 4-09-00070-2</p>
+    <div class="footer-links"><a href="#" id="privacyLink">Política de Privacidad</a></div>
+  </footer>
+
+  <div class="float-buttons">
+    <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" class="float-btn btn-whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" rel="noopener noreferrer" class="float-btn btn-facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/cepocs/" target="_blank" rel="noopener noreferrer" class="float-btn btn-instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+
+  <div id="lightbox" class="lightbox"><span class="close-lightbox">&times;</span><span class="lightbox-nav nav-prev"><i class="fas fa-chevron-left"></i></span><span class="lightbox-nav nav-next"><i class="fas fa-chevron-right"></i></span><img id="lightboxImg" src="" alt="Imagen ampliada"></div>
+  <div id="cookieBanner" class="cookie-banner"><p>🍪 Este sitio web utiliza cookies para garantizar su correcto funcionamiento. Al continuar navegando, acepta su uso.</p><button id="acceptCookies">Aceptar</button></div>
+
+  <script>
+    // Lógica interactiva para cambiar entre Noticias Propias y Medios
+    function switchTab(tabName) {
+      // Ocultar todos los paneles
+      document.querySelectorAll('.news-content-panel').forEach(panel => panel.classList.remove('active'));
+      // Desactivar todos los botones de pestañas normales
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      if(tabName === 'propias') {
+        document.getElementById('panel-propias').classList.add('active');
+        document.getElementById('tab-btn-propias').classList.add('active');
+      } else {
+        document.getElementById('panel-medios').classList.add('active');
+        document.getElementById('tab-btn-medios').classList.add('active');
+      }
+    }
+
+    // Menú móvil responsive
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMenu = document.getElementById('navLinks');
+
+    if (menuToggle && navLinksMenu) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinksMenu.classList.toggle('show');
+      });
+
+      navLinksMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const esModoMovil = window.getComputedStyle(menuToggle).display !== 'none';
+          if (esModoMovil) {
+            if (link.parentElement.classList.contains('dropdown')) {
+              // Si hacemos clic en la cabecera del dropdown del menú móvil, no cerramos inmediatamente
+              const parent = link.parentElement;
+              // Si el enlace tiene un ancla (como #seccion-principal-noticias), permitimos el scroll pero manejamos el menú
+              if (!link.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+              }
+              e.stopPropagation();
+              parent.classList.toggle('active');
+              document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== parent) d.classList.remove('active');
+              });
+            } else {
+              navLinksMenu.classList.remove('show');
+              document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+          }
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        const esModoMovil = window.getComputedStyle(menuToggle).display !== 'none';
+        if (esModoMovil && !navLinksMenu.contains(e.target) && e.target !== menuToggle) {
+          navLinksMenu.classList.remove('show');
+          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        }
+      });
+    }
+
+    const banner = document.getElementById('cookieBanner');
+    const btnAcc = document.getElementById('acceptCookies');
+    if(btnAcc && banner) {
+      btnAcc.addEventListener('click', () => banner.classList.add('hide'));
+    }
+  </script>
+</body>
+</html>              <a href="index.html#inicio">Nosotr@s</a>
               <a href="index.html#capacidades">Ejes y capacidades</a>
             </div>
           </li>
