@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Estilos específicos para la sección de navegación interna de noticias */
+    /* Estilos específicos para la sección de pestañas e imágenes de prensa */
     .news-tabs {
       display: flex;
       justify-content: center;
@@ -113,12 +113,12 @@
           <li><a href="index.html#transparencia">TRANSPARENCIA</a></li>
           <li><a href="index.html#proyectos">PROYECTOS</a></li>
           
-          <!-- NUEVO DESPLEGABLE: NOTICIAS -->
+          <!-- DESPLEGABLE: NOTICIAS -->
           <li class="dropdown">
             <a href="#seccion-principal-noticias">NOTICIAS <i class="fas fa-chevron-down"></i></a>
             <div class="dropdown-content">
-              <a href="#seccion-principal-noticias" onclick="switchTab('propias')">Noticias Propias</a>
-              <a href="#seccion-principal-noticias" onclick="switchTab('medios')">CEPOCS en los Medios</a>
+              <a href="#seccion-principal-noticias" onclick="switchTab('propias')">Nuestras Noticias</a>
+              <a href="#seccion-principal-noticias" onclick="switchTab('medios')">En los Medios</a>
             </div>
           </li>
 
@@ -137,22 +137,27 @@
 
   <main style="background: var(--verde-soft); padding: 60px 0; min-height: 85vh;">
     <div class="container" style="width: 100%;" id="seccion-principal-noticias">
-      <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 2rem; font-weight: 800;">
-        NOTICIAS
+      
+      <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800;">
+        NOTICIAS Y ACTUALIDAD
       </h1>
+      
+      <div class="section-sub" style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem auto; color: var(--gris); font-size: 0.95rem;">
+        Explora las últimas novedades, crónicas de terreno y avances socioproductivos del equipo de CEPOCS en la región.
+      </div>
 
       <!-- Pestañas de Navegación Interna -->
       <div class="news-tabs">
-        <button id="tab-btn-propias" class="tab-btn active" onclick="switchTab('propias')">Nuestras Noticias </button>
+        <button id="tab-btn-propias" class="tab-btn active" onclick="switchTab('propias')">Nuestras Noticias</button>
         <button id="tab-btn-medios" class="tab-btn" onclick="switchTab('medios')">En los Medios</button>
       </div>
 
-      <div style="background: white; padding: 2.5rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4;">
+      <div style="background: white; padding: 2.5rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4; min-height: 450px;">
         
         <!-- PANEL: NOTICIAS PROPIAS -->
         <div id="panel-propias" class="news-content-panel active">
           <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto; color: var(--gris); font-size: 0.95rem;">
-            Entérate de nuestras actividades, talleres e historias...
+            Entérate de nuestras actividades, talleres e historias directamente desde las comunidades de la Cordillera Septentrional.
           </div>
           <div>
             <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -160,10 +165,10 @@
           </div>
         </div>
 
-        <!-- PANEL: CEPOCS EN LOS MEDIOS -->
+        <!-- PANEL: CEPOCS EN LOS MEDIOS (PRENSA) -->
         <div id="panel-medios" class="news-content-panel">
           <div style="text-align: center; color: var(--gris); max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 0.95rem; line-height: 1.6;">
-            Cobertura de la prensa nacional e internacional
+            Reportajes especiales y cobertura de la prensa nacional e internacional sobre el impacto de nuestros proyectos.
           </div>
           
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
@@ -246,7 +251,9 @@
       <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
     <p>© <span id="currentYear">2026</span> CEPOCS | FUNDADO EN 1985 | RNC 4-09-00070-2</p>
-    <div class="footer-links"><a href="#" id="privacyLink">Política de Privacidad</a></div>
+    <div class="footer-links">
+      <a href="#" id="privacyLink">Política de Privacidad</a>
+    </div>
   </footer>
 
   <div class="float-buttons">
@@ -256,14 +263,12 @@
   </div>
 
   <div id="lightbox" class="lightbox"><span class="close-lightbox">&times;</span><span class="lightbox-nav nav-prev"><i class="fas fa-chevron-left"></i></span><span class="lightbox-nav nav-next"><i class="fas fa-chevron-right"></i></span><img id="lightboxImg" src="" alt="Imagen ampliada"></div>
-  <div id="cookieBanner" class="cookie-banner"><p>🍪 Este sitio web utiliza cookies para garantizar su correcto funcionamiento. Al continuar navegando, acepta su uso.</p><button id="acceptCookies">Aceptar</button></div>
+  <div id="cookieBanner" class="cookie-banner"><p>🍪 Este sitio web utiliza cookies para garantizar su correcto funcionamiento. Al continuar navegando, acepta su uso. Para más información, consulte nuestra <a href="#" id="cookiePrivacyLink">Política de Privacidad</a>.</p><button id="acceptCookies">Aceptar</button></div>
 
   <script>
-    // Lógica interactiva para cambiar entre Noticias Propias y Medios
+    // Lógica interactiva para cambiar entre Nuestras Noticias y En los Medios
     function switchTab(tabName) {
-      // Ocultar todos los paneles
       document.querySelectorAll('.news-content-panel').forEach(panel => panel.classList.remove('active'));
-      // Desactivar todos los botones de pestañas normales
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       
       if(tabName === 'propias') {
@@ -275,7 +280,7 @@
       }
     }
 
-    // Menú móvil responsive
+    // Menú móvil responsive y control de clics
     const menuToggle = document.getElementById('menuToggle');
     const navLinksMenu = document.getElementById('navLinks');
 
@@ -290,119 +295,11 @@
           const esModoMovil = window.getComputedStyle(menuToggle).display !== 'none';
           if (esModoMovil) {
             if (link.parentElement.classList.contains('dropdown')) {
-              // Si hacemos clic en la cabecera del dropdown del menú móvil, no cerramos inmediatamente
               const parent = link.parentElement;
-              // Si el enlace tiene un ancla (como #seccion-principal-noticias), permitimos el scroll pero manejamos el menú
               if (!link.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
               }
               e.stopPropagation();
-              parent.classList.toggle('active');
-              document.querySelectorAll('.dropdown').forEach(d => {
-                if (d !== parent) d.classList.remove('active');
-              });
-            } else {
-              navLinksMenu.classList.remove('show');
-              document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-            }
-          }
-        });
-      });
-
-      document.addEventListener('click', (e) => {
-        const esModoMovil = window.getComputedStyle(menuToggle).display !== 'none';
-        if (esModoMovil && !navLinksMenu.contains(e.target) && e.target !== menuToggle) {
-          navLinksMenu.classList.remove('show');
-          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-        }
-      });
-    }
-
-    const banner = document.getElementById('cookieBanner');
-    const btnAcc = document.getElementById('acceptCookies');
-    if(btnAcc && banner) {
-      btnAcc.addEventListener('click', () => banner.classList.add('hide'));
-    }
-  </script>
-</body>
-</html>              <a href="index.html#inicio">Nosotr@s</a>
-              <a href="index.html#capacidades">Ejes y capacidades</a>
-            </div>
-          </li>
-          <li><a href="index.html#aliados">ENTIDADES ALIADAS</a></li>
-          <li><a href="index.html#transparencia">TRANSPARENCIA</a></li>
-          <li><a href="index.html#proyectos">PROYECTOS</a></li>
-          <li class="dropdown">
-            <a href="#">MULTIMEDIA <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-              <a href="index.html#fotos">Fotos</a>
-              <a href="index.html#videos">Videos</a>
-            </div>
-          </li>
-          <li><a href="index.html#contacto">CONTACTO</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main style="background: var(--verde-soft); padding: 70px 0; min-height: 88vh; display: flex; flex-direction: column; justify-content: center;">
-    <div class="container" style="width: 100%;">
-      
-      <h1 class="section-title" style="color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800;">
-        NOTICIAS Y ACTUALIDAD
-      </h1>
-      
-      <div class="section-sub" style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem auto; color: var(--gris); font-size: 0.95rem;">
-        Explora las últimas novedades, crónicas de terreno y avances socioproductivos del equipo de CEPOCS en la región.
-      </div>
-
-      <div id="espacioNoticias" style="background: white; padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4; min-height: 450px;">
-        
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-f40a2137-09d9-40ea-bbff-395e0f30d965" data-elfsight-app-lazy></div>
-
-      </div>
-
-    </div>
-  </main>
-
-  <footer>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/cepocs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <p>© <span id="currentYear">2026</span> CEPOCS | FUNDADO EN 1985 | RNC 4-09-00070-2</p>
-    <div class="footer-links"><a href="#" id="privacyLink">Política de Privacidad</a></div>
-  </footer>
-
-  <div class="float-buttons">
-    <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" class="float-btn btn-whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" rel="noopener noreferrer" class="float-btn btn-facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/cepocs/" target="_blank" rel="noopener noreferrer" class="float-btn btn-instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  </div>
-
-  <div id="lightbox" class="lightbox"><span class="close-lightbox">&times;</span><span class="lightbox-nav nav-prev"><i class="fas fa-chevron-left"></i></span><span class="lightbox-nav nav-next"><i class="fas fa-chevron-right"></i></span><img id="lightboxImg" src="" alt="Imagen ampliada"></div>
-  <div id="cookieBanner" class="cookie-banner"><p>🍪 Este sitio web utiliza cookies propias y de terceros para garantizar su correcto funcionamiento y analizar el tráfico. Al continuar navegando, acepta su uso. Para más información, consulte nuestra <a href="#" id="cookiePrivacyLink">Política de Privacidad</a>.</p><button id="acceptCookies">Aceptar</button></div>
-
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinksMenu = document.getElementById('navLinks');
-
-    if (menuToggle && navLinksMenu) {
-      menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navLinksMenu.classList.toggle('show');
-      });
-
-      navLinksMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          const esModoMovil = window.getComputedStyle(menuToggle).display !== 'none';
-          if (esModoMovil) {
-            if (link.parentElement.classList.contains('dropdown')) {
-              e.preventDefault(); 
-              e.stopPropagation();
-              const parent = link.parentElement;
               parent.classList.toggle('active');
               document.querySelectorAll('.dropdown').forEach(d => {
                 if (d !== parent) d.classList.remove('active');
